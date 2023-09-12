@@ -10,17 +10,18 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    environment: develop
     steps:
     - uses: actions/checkout@v2
-    - name: replace Config
-      uses: Nambers/ReplaceStringInFile@v1.3
-            
+    - name: AppSettings Variable Substitution
+      uses: microsoft/variable-substitution@v1
       with:
-        path: Kahreedo/Web.config
-        oldString: ___DB___
-        newString: ${{ secrets.DB_DATABASE}}
-    
+        files: 'StoreManager.Api/*.json, StoreManager.Mvc/*.json'
+      env:
+        ConnectionStrings.ApplicationConnection: ${{ env.APPLICATIONCONNECTION_DB }}
+        ConnectionStrings.IdentityConnection: ${{ env.IDENTITYCONNECTION_DB }}
+        MailSettings: ${{ env.MAILSETTINGS }}
+        
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
