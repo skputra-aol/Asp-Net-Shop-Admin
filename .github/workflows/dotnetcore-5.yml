@@ -13,6 +13,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: replace Config
+      uses: Nambers/ReplaceStringInFile@v1.3
+            
+      with:
+        path: Kahreedo/Web.config
+        oldString: ___DB___
+        newString: ${{ secrets.DB_DATABASE}}
+    
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
