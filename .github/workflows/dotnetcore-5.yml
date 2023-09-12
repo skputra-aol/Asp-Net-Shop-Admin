@@ -16,7 +16,7 @@ jobs:
     - name: AppSettings Variable Substitution
       uses: microsoft/variable-substitution@v1
       with:
-        files: 'StoreManager.Api/*.json, StoreManager.Mvc/*.json'
+        files: 'StoreManager.Api/AppSettings.json'
       env:
         ConnectionStrings.ApplicationConnection: ${{ env.APPLICATIONCONNECTION_DB }}
         ConnectionStrings.IdentityConnection: ${{ env.IDENTITYCONNECTION_DB }}
