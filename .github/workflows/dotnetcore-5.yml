@@ -10,7 +10,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    environment: develop
+
     steps:
     - uses: actions/checkout@v2
     - name: AppSettings Variable Substitution
@@ -18,9 +18,9 @@ jobs:
       with:
         files: 'StoreManager.Api/AppSettings.json'
       env:
-        ConnectionStrings.ApplicationConnection: ${{ env.APPLICATIONCONNECTION_DB }}
-        ConnectionStrings.IdentityConnection: ${{ env.IDENTITYCONNECTION_DB }}
-        MailSettings: ${{ env.MAILSETTINGS }}
+        ConnectionStrings.ApplicationConnection: ${{ secrets.APPLICATIONCONNECTION_DB }}
+        ConnectionStrings.IdentityConnection: ${{ secrets.IDENTITYCONNECTION_DB }}
+        MailSettings: ${{ secrets.MAILSETTINGS }}
         
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
