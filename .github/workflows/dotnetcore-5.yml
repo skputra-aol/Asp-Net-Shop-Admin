@@ -20,7 +20,7 @@ jobs:
       env:
         ConnectionStrings.ApplicationConnection: ${{ secrets.APPLICATIONCONNECTION_DB }}
         ConnectionStrings.IdentityConnection: ${{ secrets.IDENTITYCONNECTION_DB }}
-        MailSettings: ${{ secrets.MAILSETTINGS }}
+        MailSettings: ${{ secrets.MAIL_SETTINGS }}
         
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
